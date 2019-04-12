@@ -3,7 +3,7 @@ node {
         git 'https://github.com/GogineniManojkumar/docker-jenkins.git'
     }
     stage('Build Env') { 
-        sh  label: '', 
+        sh  label: 'manoj', 
             script: '''docker-compose build
                         docker-compose up -d'''
     }
