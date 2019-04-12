@@ -1,14 +1,13 @@
 node {  
-    stage('Build') { 
-        sh 'echo "######## Build Started ######"'
-        sh 'echo "######### Build Completed######"'
+    stage('Git Clone') { 
+        git 'https://github.com/GogineniManojkumar/docker-jenkins.git'
     }
-    stage('Test') { 
-        sh 'echo "######## Testing Started ######"'
-        sh 'echo "######### Testing Completed######"'
+    stage('Build Env') { 
+        sh  label: '', 
+            script: '''docker-compose build
+                        docker-compose up -d'''
     }
-    stage('Deploy') { 
-        sh 'echo "######## Deployment Started ######"'
-        sh 'echo "######### Deployment Completed######"'
+    stage('testing') { 
+        sh ' curl -I http://localhost:80/'
     }
 }
